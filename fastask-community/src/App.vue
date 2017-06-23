@@ -1,9 +1,38 @@
 <template>
   <div id="app" class = "container">
+
     <div class = "page-header">
-      <h3> Hello World </h3>
-      <h2> Hello World </h2>
+      <nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Find Chat</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    <div class="col-sm-3 col-md-3">
+        <form class="navbar-form" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="q">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
     </div>
+
+  </div><!-- /.navbar-collapse -->
+</nav>
+      <img src= "./assets/logofa.png" height="80" width="80">
+      <h3> Welcome to Fast-ask-community</h3>
+      </div>
   </div>
 </template>
 
