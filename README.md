@@ -1,5 +1,4 @@
 # fastasked
-!PWA
-!Don't interest vuejs folder that is my failure!
-!Tommorrow will be continue to create!
+------PWA online hackathon---------
+
 Asked Me Asked Him Asked Her
