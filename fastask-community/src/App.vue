@@ -1,40 +1,49 @@
 <template>
   <div id="app" class = "container">
 
-    <div class = "page-header">
-      <nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-
-    <a class="navbar-brand" href="#">Find Chat</a>
-  </div>
-
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-    <div class="col-sm-3 col-md-3">
-        <form class="navbar-form" role="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="q">
-            <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-        </form>
-    </div>
-
-  </div><!-- /.navbar-collapse -->
-</nav>
-      <img src= "./assets/logofa.png" height="80" width="80">
-      <h3> Welcome to Fast-ask-community</h3>
+  <div class = "page-header">
+      <div>
+        <img src= "./assets/logofa.png" height="80" width="80">
+        <h3> Welcome to Fast-ask-community</h3>
       </div>
+ </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Live chat</h4>
+    </div>
+    <div class="panel-body">
+     <div class="table table-striped">
+       <thead></thead>
+       <tbody>
+         <div id="body">
+           <tr v-for = "send in message">
+           <td> {{send.name}}  </td><td> <p>:</p> </td><td>  {{send.text}}</td>
+           </tr>
+         </div>
+
+       </tbody>
+     </div>
+    </div>
   </div>
+
+  <div class="panel panel-default">
+
+    <form id="form" class="form-inline" v-on:submit.prevent="send">
+      <div class="form-group">
+        <label for="whosend">name :</label>
+        <input type="text" id ="whosend" class="form-control" v-model="newmessage.name">
+      </div>
+      <div class="form-group">
+        <label for="textsend">message :</label>
+        <input type="text" id ="textsend" class="form-control" v-model="newmessage.text">
+      </div>
+      <input type="submit" class="btn btn-primary" value="send">
+    </form>
+  </div>
+
+</div>
+
+
 </template>
 
 <script>
@@ -50,12 +59,29 @@ let config ={
 }
 let app = Firebase.initializeApp(config);
 let db = app.database();
-let messageSaid = db.ref('Message');
+let messageSaid = db.ref('message');
 
 export default {
   name : 'app',
   firebase: {
-    Message : messageSaid
+  message : messageSaid
+  },
+  data(){
+    return{
+      newmessage : {
+        name :'',
+        text :''
+      }
+    }
+  },
+  methods : {
+    send :function() {
+      messageSaid.push(this.newmessage)
+      this.newMessage.name='';
+      this.newMessage.text=''
+
+    }
+
   }
 }
 </script>
@@ -65,8 +91,12 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+
   color: #2c3e50;
   margin-top: 60px;
+}
+#body{}
+#inputmessage{
+
 }
 </style>
