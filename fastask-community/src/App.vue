@@ -17,7 +17,8 @@
        <tbody>
          <div id="body">
            <tr v-for = "send in message">
-           <td> {{send.name}}  </td><td> <p>:</p> </td><td>  {{send.text}}</td>
+           <td> {{send.name}}  </td><td> <p>:</p> </td><td>  {{send.text}} </td>
+            <td> <button class="glyphicon glyphicon-trash" v-on:click="removeMessage(send)"></button></td>
            </tr>
          </div>
 
@@ -80,8 +81,10 @@ export default {
       this.newMessage.name='';
       this.newMessage.text=''
 
+    },
+    removeMessage :function(send) {
+        messageSaid.child(send['.key']).remove();
     }
-
   }
 }
 </script>
