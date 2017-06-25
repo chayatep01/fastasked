@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import VueFire from 'vuefire'
 import App from './App'
-
+import toastr from 'toastr'
 
 
 Vue.use(VueFire)

@@ -79,11 +79,12 @@ export default {
     send :function() {
       messageSaid.push(this.newmessage)
       this.newMessage.name='';
-      this.newMessage.text=''
+      this.newMessage.text='';
+      toastr.success("you got new message");
 
     },
     removeMessage :function(send) {
-        messageSaid.child(send['.key']).remove();
+      messageSaid.child(send['.key']).remove();
     }
   }
 }
